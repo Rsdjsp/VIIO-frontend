@@ -4,9 +4,10 @@ import { IconType } from "react-icons";
 
 interface Props {
   icon?: IconType;
+  action?: () => void;
 }
 
-export default function NavIcon({ icon }: Props) {
+export default function NavIcon({ icon, action }: Props) {
   return (
     <Icon
       as={icon}
@@ -15,6 +16,7 @@ export default function NavIcon({ icon }: Props) {
       h="24px"
       flexShrink={0}
       cursor="pointer"
+      onClick={action}
     />
   );
 }

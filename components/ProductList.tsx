@@ -9,6 +9,7 @@ interface Props {
 export default function ProductList({ title }: Props) {
   return (
     <Flex
+      w="100%"
       as="section"
       p="16px 24px"
       flexDir="column"

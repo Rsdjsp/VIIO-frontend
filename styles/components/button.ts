@@ -33,6 +33,26 @@ const home = defineStyle({
   height: "36px",
 });
 
+const menu = defineStyle({
+  display: "flex",
+  alignItems: "flex-start",
+  color: "darkGray",
+  fontSize: "14px",
+  fontWeight: "600",
+  lineHeight: "20px",
+  borderRadius: "0px",
+  padding: " 8px 0px",
+  height: "fit-content",
+  width: "fit-content",
+  maxH: "36px",
+  maxWidth: "70px",
+  _hover: {
+    color: "black",
+    borderBottom: "2px solid black",
+    backgroundColor: "white",
+  },
+});
+
 export const buttonTheme = defineStyleConfig({
   baseStyle: {
     display: "flex",
@@ -42,5 +62,5 @@ export const buttonTheme = defineStyleConfig({
     gap: "8px",
     alignSelf: "stretch",
   },
-  variants: { login, provider, home },
+  variants: { login, provider, home, menu },
 });

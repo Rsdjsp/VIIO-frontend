@@ -29,5 +29,22 @@ export const inputTheme = defineMultiStyleConfig({
         },
       },
     },
+    search: {
+      field: {
+        display: "flex",
+        height: "40px",
+        padding: "8px 8px 8px 40px",
+        alignItems: "flex-start",
+        gap: "8px",
+        border: "2px solid var(--chakra-colors-black)",
+        color: "black",
+        bg: "white",
+        borderRadius: "8px",
+        _placeholder: {
+          color: "darkGray",
+        },
+        maxWidth: "240px",
+      },
+    },
   },
 });

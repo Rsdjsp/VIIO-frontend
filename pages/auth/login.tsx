@@ -34,7 +34,7 @@ const LoginPage = () => {
           </Text>
         </Flex>
       </NavWrapper>
-      <Flex bg="white" w="100%" h="744px">
+      <Flex bg="white" w="100%" h="744px" p="0px">
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={(values, actions) => {
@@ -102,7 +102,7 @@ const LoginPage = () => {
               >
                 Login
               </Button>
-              <Text variant="or" >or</Text>
+              <Text variant="or">or</Text>
               <Button type="button" variant="provider">
                 Continue with Google
               </Button>

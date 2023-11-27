@@ -8,13 +8,15 @@ import ScrollWrapper from "@/components/ScrollWrapper";
 import ProductList from "@/components/ProductList";
 import NavIcon from "@/components/NavIcon";
 
-import { Button, Flex, Icon, Text } from "@chakra-ui/react";
+import { Button, Flex, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import { FiBell, FiHome, FiSearch } from "react-icons/fi";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
+import SearchModal from "@/components/SearchModal";
 
 export default function Home() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Head>
@@ -25,6 +27,7 @@ export default function Home() {
       </Head>
       <main>
         <Flex bg="white" w="100%" minH="100vh" flexDir="column">
+          <SearchModal modalVariables={{ isOpen, onClose }} />
           <NavWrapper parameters={{ padding: "14px 24px" }}>
             <Flex w="100%">
               <Text variant="nav2">MAYNOOTH</Text>
@@ -78,7 +81,7 @@ export default function Home() {
                 <Icon as={FiHome} w="20px" h="20px" color="black" />
                 <Text variant="nav3">Home</Text>
               </Button>
-              <NavIcon icon={FiSearch} />
+              <NavIcon icon={FiSearch} action={onOpen} />
               <NavIcon icon={PiShoppingCartSimpleBold} />
               <NavIcon icon={FaRegHeart} />
               <NavIcon icon={LuUser} />

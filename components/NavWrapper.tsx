@@ -9,7 +9,6 @@ interface Props {
 export default function NavWrapper({ children, parameters }: Props) {
   return (
     <Flex
-      w="360px"
       style={parameters}
       h="56px"
       alignItems="flex-start"
