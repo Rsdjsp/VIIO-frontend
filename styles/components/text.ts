@@ -46,7 +46,7 @@ const or = defineStyle({
   width: "100%",
   fontSize: "12px",
   fontWeight: "600",
-  lineHeight: "16px",
+  lineHeight: "24px",
   letterSpacing: "0.96px",
   textTransform: "uppercase",
   textAlign: "center",
