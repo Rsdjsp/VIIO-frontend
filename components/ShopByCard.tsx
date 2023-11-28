@@ -1,5 +1,6 @@
 import React from "react";
 import { Flex, Image } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function ShopByCard() {
   return (
@@ -11,13 +12,16 @@ export default function ShopByCard() {
       border="2px solid black"
       overflow="hidden"
     >
-      <Image
-        w="116px"
-        src={
-          "https://images.hola.com/imagenes/decoracion/20220321206292/muebles-caracteristicas-por-habitaciones-am/1-63-250/muebles-funciones-6t-t.jpg"
-        }
-        alt={`Slide  1`}
-      />
+      <Link href="/products/1">
+        <Image
+          w="100%"
+          h="100%"
+          src={
+            "https://images.hola.com/imagenes/decoracion/20220321206292/muebles-caracteristicas-por-habitaciones-am/1-63-250/muebles-funciones-6t-t.jpg"
+          }
+          alt={`Slide  1`}
+        />
+      </Link>
     </Flex>
   );
 }

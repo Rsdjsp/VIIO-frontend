@@ -42,7 +42,15 @@ export default function Home() {
             </Flex>
           </NavWrapper>
           <SectionWrapper parameters="4px 24px">
-            <ImageCarousel />
+            <ImageCarousel
+              customClass={"custom-carousel"}
+              parameters={{
+                border: "2px solid black",
+                height: "164px",
+                borderRadius: "8px",
+                overflow: "hidden",
+              }}
+            />
           </SectionWrapper>
           <SectionWrapper parameters="16px 24px">
             <>

@@ -36,6 +36,11 @@ const price = defineStyle({
   fontWeight: "600",
   lineHeight: "20px",
 });
+const productName = defineStyle({
+  fontSize: "24px",
+  fontWeight: "700",
+  lineHeight: "32px",
+});
 
 const or = defineStyle({
   width: "100%",
@@ -53,5 +58,5 @@ export const textTheme = defineStyleConfig({
     fontStyle: "normal",
   },
 
-  variants: { login, label, or, nav, nav2, name, price, nav3 },
+  variants: { login, label, or, nav, nav2, name, price, nav3, productName },
 });

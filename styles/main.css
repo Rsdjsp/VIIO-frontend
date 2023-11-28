@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Inter&display=swap");
 
-.carousel .control-dots .dot {
+.custom-carousel .carousel .control-dots .dot {
   box-shadow: none !important;
   border: 2px solid #000000 !important;
   width: 12px !important;
@@ -8,10 +8,10 @@
   cursor: pointer !important;
 }
 
-.carousel .control-dots .dot.selected {
+.custom-carousel .carousel .control-dots .dot.selected {
   background: #000000 !important;
 }
-.carousel .control-dots {
+.custom-carousel .carousel .control-dots {
   display: flex;
   gap: 1px !important;
   justify-content: center;
@@ -19,7 +19,7 @@
   position: absolute !important;
 }
 
-.carousel {
+.custom-carousel .carousel {
   position: relative;
   display: flex;
   height: 200px !important;
@@ -28,6 +28,11 @@
   align-self: stretch;
   padding-bottom: 36px;
 }
-.carousel .control-arrow {
+.custom-carousel .carousel .control-arrow {
   display: none !important;
+}
+
+.carousel .control-arrow {
+  height: 274px !important;
+  margin-top: auto !important;
 }
