@@ -19,6 +19,7 @@ interface ProductsState {
   recommended: any[];
   loading: boolean;
   error: string;
+  product: any;
 }
 
 const initialState: ProductsState = {
@@ -29,6 +30,7 @@ const initialState: ProductsState = {
   room: [],
   shopBy: [],
   recommended: [],
+  product: {},
 };
 
 export const productsSlice = createSlice({
@@ -46,7 +48,7 @@ export const productsSlice = createSlice({
         state.carousel = action.payload.slice(0, 5);
         state.room = action.payload.slice(6, 10);
         state.shopBy = action.payload.slice(11, 14);
-        state.recommended = action.payload.slice(15, 20);
+        state.recommended = action.payload.slice(15, 21);
         state.loading = false;
         state.error = "";
       })

@@ -13,20 +13,27 @@ import {
   InputLeftElement,
   Icon,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef, useState } from "react";
 import NavWrapper from "./NavWrapper";
 import { FiFilter, FiSearch } from "react-icons/fi";
 import { FaChevronLeft } from "react-icons/fa";
 import NavMenu from "./NavMenu";
 import ProductList from "./ProductList";
+import { useAppSelector } from "@/redux/hooks";
+import { getProducts } from "@/redux/slices/products";
 
 interface Props {
   modalVariables: { isOpen: boolean; onClose: () => void };
 }
 
 export default function SearchModal({ modalVariables }: Props) {
+  const [searchTerm, setSearchTerm] = useState("");
   const { isOpen, onClose } = modalVariables;
-  const finalRef = React.useRef(null);
+  const finalRef = useRef(null);
+  const { products, loading } = useAppSelector(getProducts);
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -73,11 +80,22 @@ export default function SearchModal({ modalVariables }: Props) {
                 onClick={onClose}
                 cursor="pointer"
               />
-              <InputGroup display="flex" flexDir="row" mx="auto"  justifyContent="center" >
-                <InputLeftElement ml="25%" >
+              <InputGroup
+                display="flex"
+                flexDir="row"
+                mx="auto"
+                justifyContent="center"
+              >
+                <InputLeftElement ml="25%">
                   <Icon w="24px" h="24px" color="black" as={FiSearch} />
                 </InputLeftElement>
-                <Input variant="search" type="text" placeholder="Search..." />
+                <Input
+                  variant="search"
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </InputGroup>
               <Icon
                 as={FiFilter}
@@ -90,11 +108,12 @@ export default function SearchModal({ modalVariables }: Props) {
             </Flex>
           </NavWrapper>
           <NavMenu />
-          <Flex
-            w={{ base: "362px", sm: "120%" }}
-            ml={{ base: "-6px", sm: "-10%" }}
-          >
-            <ProductList title="100 Results for sofa" />
+          <Flex w={{ base: "362px", sm: "100%" }} h={"744px"} overflow="auto">
+            <ProductList
+              title="100 Results for sofa"
+              products={filteredProducts}
+              loading={loading}
+            />
           </Flex>
         </ModalContent>
       </Modal>

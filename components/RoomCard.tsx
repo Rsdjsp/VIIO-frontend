@@ -17,13 +17,13 @@ export default function RoomCard({ product }: Props) {
       overflow="hidden"
       rounded="8px"
     >
-      <Link href={`products/${product.product_id}`}>
+      <Link href={`products/${product.product_id}`} style={{width:"100%"}}>
         <Image
           w="100%"
           h="150%"
           objectFit="fill"
-          src={product.thumbnails[0][3]}
-          alt={`Slide  1`}
+          src={product.thumbnails[0][6] }
+          alt={`product ${product.product_id}`}
         />
       </Link>
     </Flex>

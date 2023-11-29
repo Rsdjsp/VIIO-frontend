@@ -29,8 +29,7 @@ import { fetchProducts, getProducts } from "@/redux/slices/products";
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useAppDispatch();
-  const { products,room } = useAppSelector(getProducts);
-
+  const {room, shopBy } = useAppSelector(getProducts);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -79,8 +78,9 @@ export default function Home() {
               <Text variant="nav2">Room Ideas</Text>
               <ScrollWrapper>
                 <>
-                  {room.map((product,index) => <RoomCard product={product} key={index} />)}
-                  
+                  {room.map((product, index) => (
+                    <RoomCard product={product} key={index} />
+                  ))}
                 </>
               </ScrollWrapper>
             </>
@@ -90,10 +90,9 @@ export default function Home() {
               <Text variant="nav2">Shop By Room</Text>
               <ScrollWrapper>
                 <>
-                  <ShopByCard />
-                  <ShopByCard />
-                  <ShopByCard />
-                  <ShopByCard />
+                  {shopBy.map((product, index) => (
+                    <ShopByCard product={product} key={index} />
+                  ))}
                 </>
               </ScrollWrapper>
             </>

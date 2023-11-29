@@ -2,7 +2,11 @@ import React from "react";
 import { Flex, Image } from "@chakra-ui/react";
 import Link from "next/link";
 
-export default function ShopByCard() {
+interface Props {
+  product: any;
+}
+
+export default function ShopByCard({ product }: Props) {
   return (
     <Flex
       w="116px"
@@ -13,15 +17,13 @@ export default function ShopByCard() {
       border="2px solid black"
       overflow="hidden"
     >
-      <Link href="/products/1">
+      <Link href={`products/${product.product_id}`}>
         <Image
           w="100%"
           h="full"
           objectFit="fill"
-          src={
-            "https://images.hola.com/imagenes/decoracion/20220321206292/muebles-caracteristicas-por-habitaciones-am/1-63-250/muebles-funciones-6t-t.jpg"
-          }
-          alt={`Slide  1`}
+          src={product.thumbnails[0][3] || product.thumbnails[0][6]}
+          alt={`product ${product.product_id}`}
         />
       </Link>
     </Flex>

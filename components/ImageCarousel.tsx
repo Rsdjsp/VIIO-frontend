@@ -15,19 +15,20 @@ const ImageCarousel = ({ customClass }: Props) => {
 
   return (
     <Carousel showThumbs={false} showStatus={false} className={customClass}>
-      {carousel.map(({ thumbnails }, index) => (
-        <Flex
-          border="2px solid black"
-          overflow="hidden"
-          rounded="8px"
-          key={index}
-        >
-          <Link href="/products/1">
+      {carousel.map(({ thumbnails, product_id }, index) => (
+        <Flex overflow="hidden" rounded="8px" key={index}>
+          <Link
+            href={`/products/${product_id}`}
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
             <Image
               w="100%"
               h="100%"
-              objectFit="fill"
-              src={thumbnails[0][6]}
+              objectFit="scale-down"
+              src={thumbnails[0][3]}
               alt={`Slide ${index + 1}`}
             />
           </Link>

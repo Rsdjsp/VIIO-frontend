@@ -1,3 +1,20 @@
+## VIIO Test
+
+# Login
+
+email:admin@admin.com
+password:admin123
+
+For the signup you can input a user with your credentials.
+
+# Home
+
+The logout button its on the top-right corner.
+
+# Search
+
+The search view is on the search icon on the navbar or on the footer bar
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

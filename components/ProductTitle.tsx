@@ -4,10 +4,15 @@ import { FaRegHeart, FaStar } from "react-icons/fa";
 import NavIcon from "./NavIcon";
 import { FiShare2 } from "react-icons/fi";
 
-export default function ProductTitle() {
+interface Props {
+  name: string;
+  price: number;
+}
+
+export default function ProductTitle({ name, price }: Props) {
   return (
     <Flex w="100%" flexDir="column" gap="12px">
-      <Text variant="productName">Product Name</Text>
+      <Text variant="productName">{name}</Text>
       <Flex
         w="100%"
         justifyContent="space-between"
@@ -21,7 +26,7 @@ export default function ProductTitle() {
           justifyContent="flex-start"
           gap="8px"
         >
-          Rp. 200.00{" "}
+          {`Rp. ${price}`}
           <Text
             variant="or"
             as="span"
@@ -36,7 +41,7 @@ export default function ProductTitle() {
           </Text>
         </Text>
         <Text variant="label" color="darkgray" textDecoration="line-through">
-          Rp. 250.00
+          {`Rp. ${price * 1.2}`}
         </Text>
         <Text
           variant="or"

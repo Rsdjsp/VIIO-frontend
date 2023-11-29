@@ -1,12 +1,14 @@
 import React from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Grid, Text } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 
 interface Props {
   title?: string;
+  products?: any[];
+  loading?: boolean;
 }
 
-export default function ProductList({ title }: Props) {
+export default function ProductList({ title, products, loading }: Props) {
   return (
     <Flex
       w="100%"
@@ -18,14 +20,13 @@ export default function ProductList({ title }: Props) {
       alignSelf="stretch"
     >
       <Text variant="nav2">{title}</Text>
-      <Flex flexDir="row" alignItems="flex-start" flexWrap="wrap" gap="24px">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </Flex>
+      {!loading && products && (
+        <Grid templateColumns="repeat(2, 1fr)" gap="24px">
+          {products!.map((product) => (
+            <ProductCard key={product.product_id} product={product} />
+          ))}
+        </Grid>
+      )}
     </Flex>
   );
 }
