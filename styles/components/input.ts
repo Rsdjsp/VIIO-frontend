@@ -43,7 +43,7 @@ export const inputTheme = defineMultiStyleConfig({
         _placeholder: {
           color: "darkGray",
         },
-        maxWidth: "240px",
+        maxWidth: "50%",
       },
     },
   },

@@ -12,7 +12,7 @@ export default function SectionWrapper({ children, parameters }: Props) {
     <Flex
       as="section"
       w="100%"
-      p={parameters}
+      p={{ base: "4px 24px", sm: parameters }}
       flexDir="column"
       alignItems="flex-start"
       alignSelf="stretch"

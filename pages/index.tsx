@@ -8,15 +8,34 @@ import ScrollWrapper from "@/components/ScrollWrapper";
 import ProductList from "@/components/ProductList";
 import NavIcon from "@/components/NavIcon";
 
-import { Button, Flex, Icon, Text, useDisclosure } from "@chakra-ui/react";
-import { FiBell, FiHome, FiSearch } from "react-icons/fi";
+import {
+  Button,
+  Flex,
+  Icon,
+  Text,
+  useDisclosure,
+  useMediaQuery,
+} from "@chakra-ui/react";
+import { FiBell, FiHome, FiLogOut, FiSearch } from "react-icons/fi";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
 import SearchModal from "@/components/SearchModal";
+import { signOut } from "next-auth/react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useEffect } from "react";
+import { fetchProducts, getProducts } from "@/redux/slices/products";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useAppDispatch();
+  const { products,room } = useAppSelector(getProducts);
+
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <>
       <Head>
@@ -28,7 +47,7 @@ export default function Home() {
       <main>
         <Flex bg="white" w="100%" minH="100vh" flexDir="column">
           <SearchModal modalVariables={{ isOpen, onClose }} />
-          <NavWrapper parameters={{ padding: "14px 24px" }}>
+          <NavWrapper parameters={{ padding: "14px 10%" }}>
             <Flex w="100%">
               <Text variant="nav2">MAYNOOTH</Text>
               <Icon
@@ -39,33 +58,34 @@ export default function Home() {
                 my="auto"
                 ml="auto"
               />
+              <Icon
+                color="black"
+                as={FiLogOut}
+                w="24px"
+                h="24px"
+                ml="8px"
+                my="auto"
+                onClick={() => signOut()}
+                cursor="pointer"
+                _hover={{ color: "red" }}
+              />
             </Flex>
           </NavWrapper>
-          <SectionWrapper parameters="4px 24px">
-            <ImageCarousel
-              customClass={"custom-carousel"}
-              parameters={{
-                border: "2px solid black",
-                height: "164px",
-                borderRadius: "8px",
-                overflow: "hidden",
-              }}
-            />
+          <SectionWrapper parameters="4px 10%">
+            <ImageCarousel customClass={"custom-carousel"} />
           </SectionWrapper>
-          <SectionWrapper parameters="16px 24px">
+          <SectionWrapper parameters="16px 10%">
             <>
               <Text variant="nav2">Room Ideas</Text>
               <ScrollWrapper>
                 <>
-                  <RoomCard />
-                  <RoomCard />
-                  <RoomCard />
-                  <RoomCard />
+                  {room.map((product,index) => <RoomCard product={product} key={index} />)}
+                  
                 </>
               </ScrollWrapper>
             </>
           </SectionWrapper>
-          <SectionWrapper parameters="16px 24px">
+          <SectionWrapper parameters="16px 10%">
             <>
               <Text variant="nav2">Shop By Room</Text>
               <ScrollWrapper>
@@ -81,7 +101,7 @@ export default function Home() {
           <ProductList title="Recommended for you" />
           <NavWrapper
             parameters={{
-              padding: "10px 24px",
+              padding: "10px 10%",
             }}
           >
             <Flex w="100%" justifyContent="space-between" alignItems="center">

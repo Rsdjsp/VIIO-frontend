@@ -6,8 +6,10 @@ import Link from "next/link";
 export default function ProductCard() {
   return (
     <Flex
-      w="144px"
-      h="192px"
+      minW="144px"
+      minH="192px"
+      maxW={{ base: "144px", sm: "46%", lg: "48%" }}
+      maxH="50%"
       flexDir="column"
       alignItems="flex-start"
       gap="4px"
@@ -15,8 +17,10 @@ export default function ProductCard() {
     >
       <Link href="/products/1">
         <Flex
-          w="144px"
-          h="144px"
+          minW="144px"
+          w="100%"
+          minH="144px"
+          h={{ base: "144px", sm: "90%" }}
           border="2px solid black"
           alignSelf="stretch"
           position="relative"

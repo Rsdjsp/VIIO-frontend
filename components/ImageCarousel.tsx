@@ -1,3 +1,5 @@
+import { useAppSelector } from "@/redux/hooks";
+import { getProducts } from "@/redux/slices/products";
 import { Flex, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
@@ -6,30 +8,26 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface Props {
   customClass?: string;
-  parameters?: any;
 }
 
-const ImageCarousel = ({ customClass, parameters }: Props) => {
-  const images = [
-    "url-to-image-1",
-    "url-to-image-2",
-    "url-to-image-3",
-    "url-to-image-4",
-    "url-to-image-5",
-  ];
+const ImageCarousel = ({ customClass }: Props) => {
+  const { carousel } = useAppSelector(getProducts);
 
   return (
     <Carousel showThumbs={false} showStatus={false} className={customClass}>
-      {images.map((image, index) => (
-        <Flex style={parameters} key={index}>
+      {carousel.map(({ thumbnails }, index) => (
+        <Flex
+          border="2px solid black"
+          overflow="hidden"
+          rounded="8px"
+          key={index}
+        >
           <Link href="/products/1">
             <Image
               w="100%"
               h="100%"
-              objectFit="cover"
-              src={
-                "https://images.hola.com/imagenes/decoracion/20220321206292/muebles-caracteristicas-por-habitaciones-am/1-63-250/muebles-funciones-6t-t.jpg"
-              }
+              objectFit="fill"
+              src={thumbnails[0][6]}
               alt={`Slide ${index + 1}`}
             />
           </Link>

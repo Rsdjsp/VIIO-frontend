@@ -2,22 +2,27 @@ import { Flex, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
-export default function RoomCard() {
+interface Props {
+  product: any;
+}
+
+export default function RoomCard({ product }: Props) {
   return (
     <Flex
       w="256px"
-      minW="256px"
-      h="154px"
+      minW={{ base: "154px", sm: "40%" }}
+      h={{ base: "154px", sm: "28%" }}
+      minH="154px"
       border="2px solid black"
       overflow="hidden"
       rounded="8px"
     >
-      <Link href="/products/1">
+      <Link href={`products/${product.product_id}`}>
         <Image
           w="100%"
-          src={
-            "https://images.hola.com/imagenes/decoracion/20220321206292/muebles-caracteristicas-por-habitaciones-am/1-63-250/muebles-funciones-6t-t.jpg"
-          }
+          h="150%"
+          objectFit="fill"
+          src={product.thumbnails[0][3]}
           alt={`Slide  1`}
         />
       </Link>

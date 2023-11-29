@@ -19,6 +19,7 @@ export default function NavMenu() {
       padding="0px 24px 0px 16px"
       borderBottom="2px solid lightgray"
       w="360px"
+      mx="auto"
     >
       {options.map(({ name, icon }, index) => (
         <Button variant="menu" key={index}>

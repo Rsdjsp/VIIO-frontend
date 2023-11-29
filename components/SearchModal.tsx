@@ -48,9 +48,21 @@ export default function SearchModal({ modalVariables }: Props) {
         scrollBehavior="outside"
       >
         <ModalOverlay />
-        <ModalContent bg="white" overflow="hidden" w="360px" p="0">
+        <ModalContent
+          display="flex"
+          flexDir="column"
+          bg="white"
+          overflow="hidden"
+          w={{ base: "100%", sm: "80%", md: "70%", lg: "50%" }}
+          p="0"
+        >
           <NavWrapper parameters={{ padding: "12px 24px 0px 16px" }}>
-            <Flex w="100%" alignItems="center" gap="16px">
+            <Flex
+              w="100%"
+              alignItems="center"
+              justifyContent="space-between"
+              gap="16px"
+            >
               <Icon
                 as={FaChevronLeft}
                 w="16px"
@@ -61,8 +73,8 @@ export default function SearchModal({ modalVariables }: Props) {
                 onClick={onClose}
                 cursor="pointer"
               />
-              <InputGroup display="flex" flexDir="row">
-                <InputLeftElement pointerEvents="none">
+              <InputGroup display="flex" flexDir="row" mx="auto"  justifyContent="center" >
+                <InputLeftElement ml="25%" >
                   <Icon w="24px" h="24px" color="black" as={FiSearch} />
                 </InputLeftElement>
                 <Input variant="search" type="text" placeholder="Search..." />
@@ -78,7 +90,10 @@ export default function SearchModal({ modalVariables }: Props) {
             </Flex>
           </NavWrapper>
           <NavMenu />
-          <Flex w="362px" ml={"-6px"}>
+          <Flex
+            w={{ base: "362px", sm: "120%" }}
+            ml={{ base: "-6px", sm: "-10%" }}
+          >
             <ProductList title="100 Results for sofa" />
           </Flex>
         </ModalContent>

@@ -11,7 +11,7 @@ export default function ProductList({ title }: Props) {
     <Flex
       w="100%"
       as="section"
-      p="16px 24px"
+      p={{ base: "16px 24px", sm: "16px 10%" }}
       flexDir="column"
       alignItems="flex-start"
       gap="12px"

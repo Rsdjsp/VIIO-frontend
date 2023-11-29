@@ -2,11 +2,12 @@ import ImageCarousel from "@/components/ImageCarousel";
 import ProductList from "@/components/ProductList";
 import ProductTitle from "@/components/ProductTitle";
 import Reviews from "@/components/Reviews";
+import React, { useState } from "react";
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
 import { FaChevronDown, FaChevronLeft, FaChevronUp } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+import SectionWrapper from "@/components/SectionWrapper";
 
 const mockColors = [
   "#828A95",
@@ -18,23 +19,27 @@ const mockColors = [
 ];
 
 export default function ProductDetails() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [textHeight, setTextHeight] = useState("102px");
   return (
-    <Flex w="100%" bg="white" flexDir="column">
+    <Flex w="100%" bg="white" flexDir="column" alignSelf="stretch">
       <Flex
         as="section"
-        w="360px"
-        h="360px"
+        w="100%"
+        minH="360px"
+        h={{ base: "360px", sm: "40%"}}
+        pt="5.5%"
         justifyContent="center"
         alignItems="center"
         position="relative"
+        overflow="hidden"
       >
         <Flex
           as="nav"
           width="100%"
           h="56px"
-          p="16px 24px 16px 16px"
+          p={{ base: "16px 24px 16px 16px", sm: "16px 20%" }}
           justifyContent="space-between"
           alignItems="flex-start"
           position="absolute"
@@ -64,12 +69,14 @@ export default function ProductDetails() {
             bg="white"
           />
         </Flex>
-        <ImageCarousel parameters={{ height: "300px", borderRadius: "8px" }} />
+        <Flex p={{ base: "24px", sm: "24px 20%" }}>
+          <ImageCarousel customClass={"custom-carousel"} />
+        </Flex>
       </Flex>
-      <Flex as="section" flexDir="column" p="24px">
+      <Flex as="section" flexDir="column" p={{ base: "24px", sm: "24px 20%" }}>
         <ProductTitle />
       </Flex>
-      <Flex as="section" p="24px" flexDir="column">
+      <Flex as="section" p={{ base: "24px", sm: "24px 20%" }} flexDir="column">
         <Text variant="nav">
           Select Variation
           <Text as="span" color="darkgray" variant="label">
@@ -89,7 +96,13 @@ export default function ProductDetails() {
             />
           ))}
         </Flex>
-        <Flex as="section" flexDir="column" gap="8px" py="24px">
+        <Flex
+          w="100%"
+          as="section"
+          flexDir="column"
+          gap="8px"
+          p={{ base: "24px", sm: "24px 0px" }}
+        >
           <Text variant="nav">Description</Text>
           <Text
             variant="label"
@@ -132,14 +145,21 @@ export default function ProductDetails() {
           </Text>
         </Flex>
       </Flex>
-      <Flex as="section" flexDir="column" p="24px" gap="12px">
+      <Flex
+        as="section"
+        flexDir="column"
+        p={{ base: "24px", sm: "0px 20%" }}
+        gap="12px"
+      >
         <Text variant="nav">Reviews</Text>
         <Reviews />
         <Reviews />
         <Reviews />
         <Reviews />
       </Flex>
-      <ProductList title="Related Products" />
+      <Flex p={{ base: "0px", sm: "24px 12%" }}>
+        <ProductList title="Related Products" />
+      </Flex>
     </Flex>
   );
 }

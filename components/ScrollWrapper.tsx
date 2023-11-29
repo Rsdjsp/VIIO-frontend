@@ -7,7 +7,7 @@ interface Props {
 
 export default function ScrollWrapper({ children }: Props) {
   return (
-    <Flex w="100%" alignItems="flex-start" gap="24px" overflow="auto" pb="16px">
+    <Flex w="100%" h="fit-content" alignItems="flex-start" gap="24px" overflow="auto" pb="16px">
       {children}
     </Flex>
   );
